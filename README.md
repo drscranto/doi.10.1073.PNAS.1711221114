@@ -28,8 +28,10 @@ We estimate the parameters of the thermal responses of juvenile mortality, adult
 
 ## Supplemental information: Solving the population model DDEs (Python code)
 
-The code in DDE_one_pop.py solves the syustem of equations for the population model for a given set of parameter values.
+The code in DDE_one_pop.py solves the syustem of equations for the population model for a given set of parameter values. 
+The code relies on PyDDE and numpy modules. 
 
+### Parameter definitions
 
 The function define_params defines all demographic parameters for three species, given as the only unout to the function spp which can be either 'trop', 'temp', or 'med'. It returns an array of all parameter values.
 
@@ -37,7 +39,13 @@ There are constant parameter values that never vary in our scenarios: a year has
 
 In each climate change scenario we must define the species affected (spp), the time over which to solve (max_years), the number of years to plot or save (keep_years), the change in mean temperature (delta_mean), the change in the amplitude of seasonal fluctuations (delta_ampl), the functional form of the response of competition strength to temperature (q_form), the process that is density dependent (dd), and solver parameters (tol, dde_dt, dde_hbsize).
 
+### Functions that define the thermal repsonses of life history traits
 
-The code relies on PyDDE and numpy modules. 
+First we define the seasonal fluctuations in temperature as T(t). We then define the general functional forms for the Boltzmann-Arrhenius function, the Sharpe-Schoolfield function, and a general Gaussian relationship. We then define specific relationships for the thermal response of reproduction, mortality, development, and competition.
+
+### Population model
+
+The main function in the code ddegrad describes the system of delay differential equations that control the way the population state variables change through time. It takes an array of current state variables (s = {J, A, S_J, tau}), an empty array of parameters (c), and the current time t. It returns an array {dJ/dt, dA/dt, dSJ/dt, dtau/dt}. The function also contains a clause to capture warnings for when the algorithm fails to accurately solve the system when one of the state variables approachers zero. If any of the state variables in s crosses to fall below zero, the function prints the current system variables. Becuase it prints at every dt at every time step, the solver slows down appreciably, alerting the user to the issue. To solve the misbehaviour around zero, the user may decrease tol and dde_dt. This may nessecitate increasing the size of the history buffer (hb_size) that can be accessed by the algorithm. The results are written to a txt file that can be read and plotted with your data visualization program of choice.
+
 
 
