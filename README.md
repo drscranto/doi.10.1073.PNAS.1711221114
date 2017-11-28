@@ -24,7 +24,7 @@ data_trop_R.csv
 
 ## Supplemental information: Fitting thermal performance curves and seasonal temperature function (R code)
 
-Estimate the parameters of the thermal responses of demographic rates for each of the three species. 
+We estimate the parameters of the thermal responses of juvenile mortality, adult mortality, birth rate, and development rate for each of the three species. We use nls to fit the specific functional forms assumed in the text. For the temperate and Mediterranean species' responses of development to temperature, we lack data at the cold extreme to estimate two parameters: TL, the temperature at which enzyme activity is 50% of the maximum value, and the Arrhenius constant associated with development below this threshold. In order to make a best guess of these parameters we write a very simple sum of squares function and find parameters that minimize it locally. For TL, we use an initial value that is a linear approximation of the 50% threshold from the data.
 
 ## Supplemental information: Solving the population model DDEs (Python code)
 
