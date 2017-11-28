@@ -28,3 +28,16 @@ We estimate the parameters of the thermal responses of juvenile mortality, adult
 
 ## Supplemental information: Solving the population model DDEs (Python code)
 
+The code in DDE_one_pop.py solves the syustem of equations for the population model for a given set of parameter values.
+
+
+The function define_params defines all demographic parameters for three species, given as the only unout to the function spp which can be either 'trop', 'temp', or 'med'. It returns an array of all parameter values.
+
+There are constant parameter values that never vary in our scenarios: a year has 365 days, climate change occurs over 100 years, the time step of the system of equations is one day, and sets one of the dde solver parameter values that affects behaviour around zero.
+
+In each climate change scenario we must define the species affected (spp), the time over which to solve (max_years), the number of years to plot or save (keep_years), the change in mean temperature (delta_mean), the change in the amplitude of seasonal fluctuations (delta_ampl), the functional form of the response of competition strength to temperature (q_form), the process that is density dependent (dd), and solver parameters (tol, dde_dt, dde_hbsize).
+
+
+The code relies on PyDDE and numpy modules. 
+
+
