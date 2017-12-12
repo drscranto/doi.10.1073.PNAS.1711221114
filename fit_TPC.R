@@ -23,7 +23,6 @@
 ## last updated 9/4/17
 
 ##############
-rm(list=ls())
 
 # Temperate species:
 
