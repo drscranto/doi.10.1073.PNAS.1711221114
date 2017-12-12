@@ -90,7 +90,6 @@ names(morepars) <- c("TR","dATR")
 write.table(morepars, file="temperate_pars.txt",col.names=FALSE,append=TRUE)
 
 #######################
-rm(list=ls())
 
 # Mediterranean species:
 
@@ -158,7 +157,7 @@ names(morepars) <- c("TR","dATR")
 write.table(morepars, file="mediterranean_pars.txt",col.names=FALSE,append=TRUE)
 
 #######################
-rm(list=ls())
+
 # Tropical species:
 
 data.spp <- read.csv("data_trop_R.csv")
